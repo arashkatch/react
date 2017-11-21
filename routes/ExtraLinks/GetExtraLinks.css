@@ -7,18 +7,19 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
+ .main {
+  padding-top: 20px;
+   font-size: 22px;
+   font-family: Arial, Helvetica, sans-serif;
+   font-weight: bold;
+}
+
 @media screen and (max-width: 1024px) {
 
   .content {
     padding: 0 16px;
   }
 
-  .main {
-    padding-top: 20px;
-     font-size: 22px;
-     font-family: Arial, Helvetica, sans-serif;
-     font-weight: bold;
-
-  }
+  
 
 }
