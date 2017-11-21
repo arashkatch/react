@@ -21,6 +21,7 @@ class AboutPage extends React.Component {
   render() {
     return (
       <Layout className={s.content}>
+        <Hello name="World" />,
         <h1>{title}</h1>
         <div dangerouslySetInnerHTML={{ __html: html }} />
       </Layout>
@@ -29,4 +30,11 @@ class AboutPage extends React.Component {
 
 }
 
+class Hello extends React.Component {
+  render() {
+    return <div>Hello {this.props.name}</div>;
+  }
+}
+
 export default AboutPage;
+
