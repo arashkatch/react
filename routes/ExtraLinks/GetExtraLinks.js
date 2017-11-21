@@ -32,7 +32,7 @@ class AboutPage extends React.Component {
 
 class Hello extends React.Component {
   render() {
-    return <div>Hello {this.props.name}</div>;
+    return <div className={s.main}>Hello {this.props.name}</div>;
   }
 }
 
