@@ -10,25 +10,19 @@
 import React from 'react';
 import Layout from '../../components/Layout';
 import s from './GetExtraLinks.css';
-import { title, html } from './GetExtraLinks.md';
 
 class AboutPage extends React.Component {
 
-  myArray = [1,2,3];
-
-  componentDidMount() {
-    document.title = title;
-  }
+  // componentDidMount() {
+  //   document.title = title;
+  // }
   
 
   render() {
     return (
       <Layout className={s.content}>
         <Counter/>
-        <FilteredList/>
-        <Hello name="World" />,
-        <h1>{title}</h1>
-        <div dangerouslySetInnerHTML={{ __html: html }} />
+        <FilteredList />
       </Layout>
     );
   }
@@ -39,12 +33,6 @@ export default AboutPage;
 
 
 ///////
-
-class Hello extends React.Component {
-  render() {
-    return <div className={s.main}>Hello {this.props.name}</div>;
-  }
-}
 
 var Counter = React.createClass({
   incrementCount: function(){
@@ -99,7 +87,7 @@ var FilteredList = React.createClass({
   },
   render: function(){
     return (
-      <div className="filter-list">
+      <div className={s.filteredList}>
         <input type="text" placeholder="Search" onChange={this.filterList}/>
       <List items={this.state.items}/>
       </div>

@@ -21,10 +21,10 @@ function Navigation() {
         About
       </Link>
       <Link className={linkClass('/get-started')} to="/get-started">
-        Get Started
+        Static Contents
       </Link>
       <Link className={linkClass('/ExtraLinks')} to="/ExtraLinks">
-        Extra Link
+        DATA FLOW
       </Link>
       <Link className={linkClass('/404')} to="/404">
         Not Found

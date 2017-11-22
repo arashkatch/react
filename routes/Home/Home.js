@@ -27,7 +27,7 @@ class HomePage extends React.Component {
   render() {
     return (
       <Layout className={s.content}>
-        <h1>Welcome!</h1>
+      <Hello name="" />
         <p>
           This website is built with <a href="https://github.com/kriasoft/react-app">React App
           SDK</a> — CLI tools and templates for authoring React/Redux apps with just a single dev
@@ -62,3 +62,11 @@ class HomePage extends React.Component {
 }
 
 export default HomePage;
+
+
+class Hello extends React.Component {
+  render() {
+    return <div className={s.main}>Hello {this.props.name}</div>;
+  }
+}
+
