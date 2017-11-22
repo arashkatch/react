@@ -68,20 +68,13 @@ var FilteredList = React.createClass({
     });
     this.setState({items: updatedList});
   },
-  //user: function() { return "1"; },
-//   test: function() {fetch('https://api.github.com/users/mojombo').then(
-//     function(response){ return response;}
-//  )},
- // user : function() { return  fetch('https://api.github.com/users/mojombo').then(response=>{return "1"}) },
-  //user : function() {return  fetch('https://api.github.com/users/mojombo').then(function(response){ if(response.ok){  return "1";  } })},
-  //tmp :function() { return $.getJSON('https://randomuser.me/api/').then(({ results }) => this.setState({ person: results })) },
   getInitialState: function(){
    
      return {
        initialItems:
         [
-         "Apples",//+" "+this.user(),
-         "Broccoli",//+" "+this.test(),
+         "Apples",
+         "Broccoli",
          "Chicken"
        ]
        ,
@@ -92,7 +85,7 @@ var FilteredList = React.createClass({
     this.setState({items: this.state.initialItems})
   },
   componentDidMount() {    
-    var that = this;
+    //var that = this;
     var url = 'https://api.github.com/users/mojombo'
   
     fetch(url)
@@ -103,7 +96,7 @@ var FilteredList = React.createClass({
       return response.json();
     })
     .then(function(data) {
-      that.setState({ user: data.name, avatar_url: data.avatar_url });
+      this.setState({ user: data.name, avatar_url: data.avatar_url });
     });
   },
   render: function(){
@@ -112,37 +105,21 @@ var FilteredList = React.createClass({
         <input type="text" placeholder="Search" onChange={this.filterList}/>
       <List items={this.state.items}/>
       <div>{this.state.user}</div>
-      <div>{this.state.avatar_url}</div>
       <div>{this._renderAsImage()}</div>
       </div>
     );
   },
 
   _renderAsImage : function(){
-    // const size = this.props.size;
-    // const round = this.props.round;
-    // const alt = this.props.name || this.props.value;
-    // const imageStyle = this.props.unstyled ? null : {
-    //     maxWidth: '100%',
-    //     width: size,
-    //     height: size,
-    //     borderRadius: (round ? 500 : 0)
-    //};
     return (
         <img width= "100px"
             height= "100px"
-            // style={imageStyle}
             src={this.state.avatar_url}
-            // alt={alt}
-            // onError={this.fetch} />
-            />
+        />
     )
 }
 
 });
-
-
-
 
 //-----------------------  list class
 var List = React.createClass({
