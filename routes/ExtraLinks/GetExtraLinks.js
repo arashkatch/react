@@ -21,9 +21,10 @@ class AboutPage extends React.Component {
   render() {
     return (
       <Layout className={s.content}>
-        {/* <Counter/> */}
+        <Counter/>
         <FilteredList />
       </Layout>
+      
     );
   }
 
@@ -34,26 +35,26 @@ export default AboutPage;
 
 ///////
 
-// var Counter = React.createClass({
-//   incrementCount: function(){
-//     this.setState({
-//       count: this.state.count + 1
-//     });
-//   },
-//   getInitialState: function(){
-//      return {
-//        count: 0
-//      }
-//   },
-//   render: function(){
-//     return (
-//       <div class="my-component">
-//         <h1>Count: {this.state.count}</h1>
-//         <button type="button" onClick={this.incrementCount}>Increment</button>
-//       </div>
-//     );
-//   }
-// });
+var Counter = React.createClass({
+  incrementCount: function(){
+    this.setState({
+      count: this.state.count + 1
+    });
+  },
+  getInitialState: function(){
+     return {
+       count: 0
+     }
+  },
+  render: function(){
+    return (
+      <div class="my-component">
+        <h1>Count: {this.state.count}</h1>
+        <button type="button" onClick={this.incrementCount}>Increment</button>
+      </div>
+    );
+  }
+});
 
 
 // reference : data flow https://scotch.io/tutorials/learning-react-getting-started-and-concepts
@@ -112,11 +113,38 @@ var FilteredList = React.createClass({
       <List items={this.state.items}/>
       <div>{this.state.user}</div>
       <div>{this.state.avatar_url}</div>
+      <div>{this._renderAsImage()}</div>
       </div>
     );
-  }
+  },
+
+  _renderAsImage : function(){
+    // const size = this.props.size;
+    // const round = this.props.round;
+    // const alt = this.props.name || this.props.value;
+    // const imageStyle = this.props.unstyled ? null : {
+    //     maxWidth: '100%',
+    //     width: size,
+    //     height: size,
+    //     borderRadius: (round ? 500 : 0)
+    //};
+    return (
+        <img width= "100px"
+            height= "100px"
+            // style={imageStyle}
+            src={this.state.avatar_url}
+            // alt={alt}
+            // onError={this.fetch} />
+            />
+    )
+}
+
 });
 
+
+
+
+//-----------------------  list class
 var List = React.createClass({
   render: function(){
     return (
