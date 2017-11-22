@@ -85,7 +85,7 @@ var FilteredList = React.createClass({
     this.setState({items: this.state.initialItems})
   },
   componentDidMount() {    
-    //var that = this;
+    var that = this;
     var url = 'https://api.github.com/users/mojombo'
   
     fetch(url)
@@ -96,7 +96,7 @@ var FilteredList = React.createClass({
       return response.json();
     })
     .then(function(data) {
-      this.setState({ user: data.name, avatar_url: data.avatar_url });
+      that.setState({ user: data.name, avatar_url: data.avatar_url });
     });
   },
   render: function(){
