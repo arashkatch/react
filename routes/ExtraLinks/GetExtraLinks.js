@@ -21,7 +21,7 @@ class AboutPage extends React.Component {
   render() {
     return (
       <Layout className={s.content}>
-        <Counter/>
+        {/* <Counter/> */}
         <FilteredList />
       </Layout>
     );
@@ -34,26 +34,26 @@ export default AboutPage;
 
 ///////
 
-var Counter = React.createClass({
-  incrementCount: function(){
-    this.setState({
-      count: this.state.count + 1
-    });
-  },
-  getInitialState: function(){
-     return {
-       count: 0
-     }
-  },
-  render: function(){
-    return (
-      <div class="my-component">
-        <h1>Count: {this.state.count}</h1>
-        <button type="button" onClick={this.incrementCount}>Increment</button>
-      </div>
-    );
-  }
-});
+// var Counter = React.createClass({
+//   incrementCount: function(){
+//     this.setState({
+//       count: this.state.count + 1
+//     });
+//   },
+//   getInitialState: function(){
+//      return {
+//        count: 0
+//      }
+//   },
+//   render: function(){
+//     return (
+//       <div class="my-component">
+//         <h1>Count: {this.state.count}</h1>
+//         <button type="button" onClick={this.incrementCount}>Increment</button>
+//       </div>
+//     );
+//   }
+// });
 
 
 // reference : data flow https://scotch.io/tutorials/learning-react-getting-started-and-concepts
@@ -67,29 +67,51 @@ var FilteredList = React.createClass({
     });
     this.setState({items: updatedList});
   },
+  //user: function() { return "1"; },
+//   test: function() {fetch('https://api.github.com/users/mojombo').then(
+//     function(response){ return response;}
+//  )},
+ // user : function() { return  fetch('https://api.github.com/users/mojombo').then(response=>{return "1"}) },
+  //user : function() {return  fetch('https://api.github.com/users/mojombo').then(function(response){ if(response.ok){  return "1";  } })},
+  //tmp :function() { return $.getJSON('https://randomuser.me/api/').then(({ results }) => this.setState({ person: results })) },
   getInitialState: function(){
+   
      return {
-       initialItems: [
-         "Apples",
-         "Broccoli",
-         "Chicken",
-         "Duck",
-         "Eggs",
-         "Fish",
-         "Granola",
-         "Hash Browns"
-       ],
+       initialItems:
+        [
+         "Apples",//+" "+this.user(),
+         "Broccoli",//+" "+this.test(),
+         "Chicken"
+       ]
+       ,
        items: []
      }
   },
   componentWillMount: function(){
     this.setState({items: this.state.initialItems})
   },
+  componentDidMount() {    
+    var that = this;
+    var url = 'https://api.github.com/users/mojombo'
+  
+    fetch(url)
+    .then(function(response) {
+      if (response.status >= 400) {
+        throw new Error("Bad response from server");
+      }
+      return response.json();
+    })
+    .then(function(data) {
+      that.setState({ user: data.name, avatar_url: data.avatar_url });
+    });
+  },
   render: function(){
     return (
       <div className={s.filteredList}>
         <input type="text" placeholder="Search" onChange={this.filterList}/>
       <List items={this.state.items}/>
+      <div>{this.state.user}</div>
+      <div>{this.state.avatar_url}</div>
       </div>
     );
   }
